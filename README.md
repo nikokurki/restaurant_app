@@ -1,1 +1,15 @@
 # restaurant_app
+
+
+Ravintolasovellus
+-----------------
+Sovelluksen idea on sama kuin Ravintolasovellus esimerkkiaiheessa, alueena todennäkösesti Helsingin kantakaupunki. 
+Käyttäjävaihtoehtoja on kaksi: peruskäyttäjä ja ylläpitäjä. 
+
+Ominaisuuksia:
+1. Käyttäjä voi kirjautua sisään, ulos ja luoda uuden tunnuksen
+2. Käyttäjä näkee ravintolat alueella ja voi painaa ravintola lisätietojen näyttämiseksi
+3. Käyttäjä voi arvioida ja lukea arvioita ravintoloista
+4. Ylläpitäjä voi lisätä ja poistaa ravintoloja (tavoitteena että ravintoloita pystyisi lisäämään kursorin osoittamaan sijaintiin)
+5. Käyttäjä voi etsiä ravintolat sanan perusteella sekä nähdä näistä listauksen parhaimpien arvioiden mukaan
+6. Ylläpitäjä voi poistaa arvioita ja luoda ryhmiä ravintoloiden luokitteluun
