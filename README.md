@@ -3,8 +3,7 @@
 
 Ravintolasovellus
 -----------------
-Sovelluksen idea on sama kuin Ravintolasovellus esimerkkiaiheessa, alueena todennäkösesti Helsingin kantakaupunki. 
-Käyttäjävaihtoehtoja on kaksi: peruskäyttäjä ja ylläpitäjä. 
+Sovelluksen idea on sama kuin Ravintolasovellus esimerkkiaiheessa: sovelluksessa näkyy tietyn alueen (todennäkösesti Helsingin kantakaupunki) ravintolat, joita pystyy selaamaan ja arvioimaan. Käyttäjävaihtoehtoja on kaksi: peruskäyttäjä ja ylläpitäjä. 
 
 Ominaisuuksia:
 1. Käyttäjä voi kirjautua sisään, ulos ja luoda uuden tunnuksen
