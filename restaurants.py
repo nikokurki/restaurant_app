@@ -11,7 +11,7 @@ def get_list():
 
 def get_restaurantdata(id):
     sql = text("SELECT R.name, I.description, I.open_hours FROM restaurant R, info I WHERE R.restaurant_id = id AND I.restaurant_id = id")
-    result = db.session.execute(sql)
+    result = db.session.execute(sql, {"R.restaurant_id":id})
     return result.fetchall()
 
 

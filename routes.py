@@ -13,7 +13,7 @@ def main():
     length = len(list)
     return render_template("main.html", restaurants=list, length=length)
 
-@app.route("/list")
+@app.route("/list", methods=["GET","POST"])
 def list():
     selected_option = request.form.get("selectedOption")
     list = reviews.get_list(selected_option)
@@ -24,12 +24,14 @@ def review():
     if request.method == "GET":
         return render_template("review.html")
     if request.method == "POST":
+        id = request.form["id"]
         rating = request.form["rating"]
         content = request.form["content"]
-        if reviews.send(restaurant_id, rating, content):
+        print(rating)
+        if reviews.send(id, content, rating):
             return redirect("/main")
         else:
-            return render_template("error.html", message="Ravintolan lisäys ei onnistunut")
+            return render_template("error.html", message="Arvostelun lisäys ei onnistunut")
         
 @app.route("/new", methods=["GET", "POST"])
 def new():
