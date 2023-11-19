@@ -1,9 +1,12 @@
 
 {% for review in reviews %}
-<b>Ravintola: </b> {{ review[0] }}
-<b>Longitudi: </b> {{ review[1] }}
-<b>Latitudi: </b> {{ review[2] }}
-<b>Gei: </b> {{ review[3] }}
+<b>Arvostelu: </b> {{ review[0] }}
+<hr>
+<b>Arvosana: </b> {{ review[1] }}
+<hr>
+<b>Aika: </b> {{ review[3] }}
 <hr>
 {% endfor %}
+<a href="/review">Lisää arvostelu</a>
+<hr>
 <a href="/main">Takaisin karttanäkymään</a>

@@ -23,16 +23,14 @@
     </form>
   {% endif %}
   {% if length > 0 %}
-  <form>
+  <form action="/list" method="POST">
     <label for="dynamicDropdown">Valitse ravintola:</label>
-    <select id="dynamicDropdown" name="dynamicDropdown">
+    <select id="dynamicDropdown" name="selectedOption">
       {% for item in restaurants %}
         <option value="{{ item[0] }}">{{ item[1] }}</option>
       {% endfor %}
     </select>
-    <form action="/list" method="POST">
     <button type="submit">Lisää tietoa</button>
-    </form>
   </form>
   {% endif %}
   <form action="/logout">
