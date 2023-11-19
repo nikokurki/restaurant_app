@@ -12,3 +12,7 @@ Ominaisuuksia:
 4. Ylläpitäjä voi lisätä ja poistaa ravintoloja (tavoitteena että ravintoloita pystyisi lisäämään hiirellä tiettyyn valittuun sijaintiin kartalla)
 5. Käyttäjä voi etsiä ravintolat sanan perusteella sekä nähdä näistä listauksen parhaimpien arvioiden mukaan
 6. Ylläpitäjä voi poistaa arvioita ja luoda ryhmiä ravintoloiden luokitteluun
+
+-----------------------
+Tällä hetkellä sovelluksen ensimmäisenä luotu käyttäjä on aina ylläpitäjä. Karttaominaisuus on keskeneräinen, ravintolat saa avattua menun kautta lisäyksen jälkeen. Ravintolan valitsemalla pystyy lukemaan arvosteluja sekä lisäämään niitä. Ravintoloilla ei ole vielä ryhmäluokitusta, eikä ylläpitäjä voi poistaa ravintoloita.
+Ravintoloita ei myöskään pysty vielä hakemaan millään tavalla.
