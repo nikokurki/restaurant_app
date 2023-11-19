@@ -27,7 +27,6 @@ def review():
         id = request.form["id"]
         rating = request.form["rating"]
         content = request.form["content"]
-        print(rating)
         if reviews.send(id, content, rating):
             return redirect("/main")
         else:
