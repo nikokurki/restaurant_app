@@ -15,4 +15,4 @@ Ominaisuuksia:
 
 -----------------------
 Tällä hetkellä sovelluksen ensimmäisenä luotu käyttäjä on aina ylläpitäjä. Karttaominaisuus on keskeneräinen, ravintolat saa avattua menun kautta lisäyksen jälkeen. Ravintolan valitsemalla pystyy lukemaan arvosteluja sekä lisäämään niitä. Ravintoloilla ei ole vielä ryhmäluokitusta, eikä ylläpitäjä voi poistaa ravintoloita.
-Ravintoloita ei myöskään pysty vielä hakemaan millään tavalla.
+Ravintoloita ei myöskään pysty vielä hakemaan millään tavalla. Arvostelut ovat myös tällä hetkellä rikki ravintolakohtaisesti.
