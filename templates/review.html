@@ -1,6 +1,9 @@
 <form action="/review" method="post">
-    <label for="rating">Arvosana:</label>
+    <label for="id">Ravintolan ID:</label>
+    <input type="number" name="id"><br>
+    <label for="rating">Arvosana (1-5):</label>
     <input type="number" name="rating"><br>
+    <label for="content">Lisätietoa:</label>
     <textarea name="content" rows="3" cols="40"></textarea>
     <br>
     <input type="submit" value="Lisää arvostelu">
