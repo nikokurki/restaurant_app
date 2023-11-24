@@ -14,6 +14,13 @@ Ominaisuuksia:
 6. Ylläpitäjä voi poistaa arvioita ja luoda ryhmiä ravintoloiden luokitteluun
 
 -----------------------
+Välipalautus 2
+-----------------------
+Käyttöohjeet:
+Sovellus tarvitsee schema.sql mukaisen tietokantarakenteen ja .env sisältää DATABASE_URL ja SECRET_KEY.
+$ flask run
+
+Sovelluksen tilanne:
 - Tällä hetkellä sovelluksen ensimmäisenä luotu käyttäjä on aina ylläpitäjä.
 - Karttaominaisuus on keskeneräinen, ravintolat saa avattua menun kautta lisäyksen jälkeen.
 - Ravintolan valitsemalla pystyy lukemaan arvosteluja sekä lisäämään niitä.
