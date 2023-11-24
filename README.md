@@ -18,6 +18,7 @@ Välipalautus 2
 -----------------------
 Käyttöohjeet:
 Sovellus tarvitsee schema.sql mukaisen tietokantarakenteen ja .env sisältää DATABASE_URL ja SECRET_KEY.
+
 $ flask run
 
 Sovelluksen tilanne:
