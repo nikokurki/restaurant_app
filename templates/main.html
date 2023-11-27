@@ -21,9 +21,11 @@
     <form action="/new">
       <input type="submit" value="Lisää ravintola">
     </form>
+  {% else %}
+  <b>Olet kirjautunut sisään käyttäjänä {{ session.name }}. </b>
   {% endif %}
   {% if length > 0 %}
-  <form action="/list" method="POST">
+  <form action="/rev_page" method="POST">
     <label for="dynamicDropdown">Valitse ravintola:</label>
     <select id="dynamicDropdown" name="selectedOption">
       {% for item in restaurants %}

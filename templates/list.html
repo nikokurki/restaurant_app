@@ -1,12 +1,19 @@
-
+<!DOCTYPE html>
+<head>
+<title>Ravintolasovellus</title>
+</head>
+<body>
+Ravintolan <b>{{ session.restaurant}}</b> arvostelut:
+<br>
+<br>
 {% for review in reviews %}
-<b>Arvostelu: </b> {{ review[0] }}
+<b>Arvosana: </b> {{ review[0] }}/5
 <hr>
-<b>Arvosana: </b> {{ review[1] }}
+<b>Arvostelu: </b> {{ review[1] }}
 <hr>
 <b>Arvostelija: </b> {{ review[2] }}
 <hr>
-<b>Aika: </b> {{ review[3] }}
+<b>Aika: </b> {{ review[3].strftime("%Y-%m-%d %H:%M:%S") }}
 <hr>
 <hr>
 <hr>
@@ -14,3 +21,4 @@
 <a href="/review">Lisää arvostelu</a>
 <hr>
 <a href="/main">Takaisin karttanäkymään</a>
+</body>
