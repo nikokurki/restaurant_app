@@ -4,8 +4,8 @@ from sqlalchemy.sql import text
 import users, restaurants
 
 def get_list(restaurant_id):
-    sql = text("SELECT R.content, R.rating, U.username, R.sent_at FROM ratings R, users U WHERE R.restaurant_id=restaurant_id AND R.user_id=U.id ORDER BY R.rating_id")
-    result = db.session.execute(sql, {"restaurant_id":restaurant_id})
+    sql = text("SELECT R.rating, R.content, U.username, R.sent_at FROM ratings R, users U WHERE R.restaurant_id=:id AND R.user_id=U.id ORDER BY R.id")
+    result = db.session.execute(sql, {"id":restaurant_id})
     return result.fetchall()
 
 def send(restaurant_id, content, rating):

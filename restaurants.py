@@ -1,20 +1,24 @@
 from db import db
 from sqlalchemy.sql import text
+from flask import session
 
 import users
 
 
 def get_list():
-    sql = text("SELECT restaurant_id, name, longitude, latitude FROM restaurants ORDER BY restaurant_id")
+    sql = text("SELECT id, name, longitude, latitude FROM restaurants ORDER BY id")
     result = db.session.execute(sql)
     return result.fetchall()
 
 def get_restaurantdata(id):
-    sql = text("SELECT R.name, I.description, I.open_hours FROM restaurant R, info I WHERE R.restaurant_id = id AND I.restaurant_id = id")
+    sql = text("SELECT R.name, I.description, I.open_hours FROM restaurant R, info I WHERE R.id = id AND I.restaurant_id = id")
     result = db.session.execute(sql, {"R.restaurant_id":id})
     return result.fetchall()
 
 
+def get_restaurant(id):
+    result = db.session.execute(text("SELECT name FROM restaurants WHERE id=:id"), {"id":id})
+    return result.fetchone()
 
 def add_restaurant(name,longitude,latitude):
     user_id = users.user_id()
