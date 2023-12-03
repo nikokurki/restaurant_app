@@ -16,11 +16,20 @@ def main():
 @app.route("/rev_page", methods=["GET","POST"])
 def rev_page():
     id = int(request.form.get("selectedOption"))
-    list = reviews.get_list(id)
-    name = restaurants.get_restaurant(id)
+    rev_list = reviews.get_list(id)
+    res_data = restaurants.get_restaurant_data(id)
+    rating_total = 0
+    if len(rev_list) > 0:
+        for review in rev_list:
+            if review[0] is not None:
+                rating_total += review[0]
+        avg_rating = rating_total/len(rev_list)
+    else:
+        avg_rating = 0
+    name = restaurants.get_restaurant_name(id)
     session["restaurant"] = name[0]
     session["restaurant_id"] = id
-    return render_template("list.html", reviews=list)
+    return render_template("list.html", reviews=rev_list, data=res_data, rating=avg_rating, count=len(rev_list))
 
 @app.route("/review", methods=["GET", "POST"])
 def review():
@@ -29,7 +38,6 @@ def review():
     if request.method == "POST":
         id = session["restaurant_id"]
         rating = request.form.get("rate")
-        print(rating)
         content = request.form["content"]
         if reviews.send(id, content, rating):
             return redirect("/main")
@@ -42,9 +50,10 @@ def new():
         return render_template("new.html")
     if request.method == "POST":
         name = request.form["name"]
+        description = request.form["content"]
         longitude = request.form["longitude"]
         latitude = request.form["latitude"]
-        if restaurants.add_restaurant(name, longitude, latitude):
+        if restaurants.add_restaurant(name, description, longitude, latitude):
             return redirect("/main")
         else:
             return render_template("error.html", message="Ravintolan lisäys ei onnistunut")
@@ -81,3 +90,11 @@ def register():
             return redirect("/")
         else:
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
+        
+
+@app.route("/delete", methods=["POST"])
+def delete():
+    if request.method == "POST":
+        id = request.form["id"]
+        reviews.delete_review(id)
+        return redirect("/main")

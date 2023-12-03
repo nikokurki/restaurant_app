@@ -5,7 +5,7 @@ CREATE TABLE users (
 );
 CREATE TABLE restaurants (
 	id SERIAL PRIMARY KEY,
-	name TEXT,
+	name TEXT UNIQUE,
 	longitude FLOAT,
 	latitude FLOAT
 );
@@ -15,7 +15,8 @@ CREATE TABLE ratings (
 	content TEXT, 
 	rating INTEGER, 
 	user_id INTEGER REFERENCES users, 
-	sent_at TIMESTAMP
+	sent_at TIMESTAMP,
+	visible BOOL
 );
 CREATE TABLE info (
 	id SERIAL PRIMARY KEY,
@@ -27,6 +28,10 @@ CREATE TABLE restaurant_groups (
     id SERIAL PRIMARY KEY,
 	category TEXT UNIQUE,
 	restaurant_id INTEGER REFERENCES restaurants
+);
+CREATE TABLE admins (
+	id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users
 );
 	
 	
