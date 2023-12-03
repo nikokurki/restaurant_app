@@ -1,0 +1,61 @@
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.styled-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.styled-list li {
+    background-color: #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+.stars-container {
+    font-size: 24px; 
+}
+
+.stars {
+    font-size: 24px; /* Adjust the font size of stars as needed */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.star {
+    color: #ffd700; /* Set the star color (yellow in this example) */
+    margin-right: 2px; /* Adjust the spacing between stars */
+    position: relative;
+    display: inline-block;
+}
+.star::before {
+    content: '\2605'; /* Unicode character for a filled star */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--width, 100%);
+    overflow: hidden;
+    color: transparent;
+}
+.star.half:after {
+    content:'\2605';
+    color: #ffd700;
+    position: absolute;
+    margin-left: -20px;
+    width: 10px;
+    overflow: hidden;
+}
+.star:last-child {
+    margin-right: 0;
+}
+.star.on {
+    content:'\2605';
+}

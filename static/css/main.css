@@ -3,3 +3,11 @@ body {
     max-width: 45em;
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
+form label, input {
+    margin: auto 0;
+}
+form {
+    margin-bottom: 2em;
+    margin-left: 2em;
+}
+
