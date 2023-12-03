@@ -1,21 +1,72 @@
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravintolasovellus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 <title>Ravintolasovellus</title>
 </head>
 <body>
 Ravintolan <b>{{ session.restaurant}}</b> arvostelut:
 <br>
+<hr>
+{% for description, open_hours in data %}
+{{ description }}
+<br><br>
+Avoinna: {{ open_hours }}
+{% endfor %}
+<hr>
 <br>
-{% for review in reviews %}
-<b>Arvosana: </b> {{ review[0] }}/5
+<div class="stars-container">
+    <div class="stars" style="--rating: {{ rating }};">
+        {% set full_stars = rating | int %}
+        {% set half_star = rating - full_stars %}
+        {% if half_star >= 0.5 %}
+            {% set remaining_stars = 5 - full_stars - 1 %}
+            {% set full_stars = full_stars+1 %}
+        {% else %}
+            {% set remaining_stars = 5 - full_stars %}
+        {% endif %}
+        {% for _ in range(full_stars) %}
+            <span class="star">&#9733;</span>
+        {% endfor %}
+        <!--{% if remaining_stars > 0 %}
+            <span class="star" style="--width: {{ (rating % 1) * 100 }}%">&#9733;</span>
+        {% endif %}-->
+        {% for _ in range(remaining_stars) %}
+            <span class="star">&#9734;</span>
+        {% endfor %}
+    </div>
+</div>
+{{count}} arvostelun perusteella.
+<br>
 <hr>
-<b>Arvostelu: </b> {{ review[1] }}
+<br>
+{% for rating, review, reviewer, time, id in reviews %}
+    <div class="stars-container">
+        {% if rating is defined and rating is not none %}
+            {% set rounded_rating = rating | round %}
+            {% for _ in range(rounded_rating) %}
+                <span class="star">&#9733;</span>
+            {% endfor %}
+        {% else %}
+            <span class="no-rating">Ei arvosanaa</span>
+        {% endif %}
+    </div>
 <hr>
-<b>Arvostelija: </b> {{ review[2] }}
+<b>Arvostelu: </b> {{ review }}
 <hr>
-<b>Aika: </b> {{ review[3].strftime("%Y-%m-%d %H:%M:%S") }}
+<b>Arvostelija: </b> {{ reviewer }}
+<hr>
+<b>Aika: </b> {{ time.strftime("%Y-%m-%d %H:%M:%S") }}
 <hr>
 <hr>
+{% if session.user_id == 1 %}
+<form action="/delete", method="POST">
+    <input type="hidden" name="id" value="{{ id }}">
+    <input type="submit" value="Poista arvostelu">
+</form>
+{% endif %}
 <hr>
 {% endfor %}
 <a href="/review">Lisää arvostelu</a>

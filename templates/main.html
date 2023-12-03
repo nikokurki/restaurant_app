@@ -18,9 +18,10 @@
   {% if session.user_id == 1 %}
   <b>Olet kirjautunut ylläpitäjänä.</b>
   <br>
-    <form action="/new">
+  <br>
+  <form action="/new">
       <input type="submit" value="Lisää ravintola">
-    </form>
+  </form>
   {% else %}
   <b>Olet kirjautunut sisään käyttäjänä {{ session.name }}. </b>
   {% endif %}

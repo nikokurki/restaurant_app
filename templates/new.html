@@ -1,9 +1,19 @@
+<!DOCTYPE html>
+<title>Ravintolasovellus</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+    <h1>Lisää ravintola</h1>
 <form action="/new" method="post">
     <label for="name">Ravintolan nimi:</label>
     <input type="text" name="name"><br>
+    <label for="content">Ravintolan kuvaus:</label>
+    <textarea name="content" rows="3" cols="40"></textarea>
+    <br>
     <label for="longitude">Longitudi:</label>
     <input type="longitude" name="longitude"><br>
     <label for="Latitude">Latitudi:</label>
     <input type="latitude" name="latitude"><br>
     <input type="submit" value="Lisää">
 </form>
+</body>
