@@ -10,10 +10,12 @@
 Ravintolan <b>{{ session.restaurant}}</b> arvostelut:
 <br>
 <hr>
-{% for description, open_hours in data %}
+{% for description, open_hours, category in data %}
 {{ description }}
 <br><br>
 Avoinna: {{ open_hours }}
+<br><br>
+<b>{{ category }}</b>
 {% endfor %}
 <hr>
 <br>
