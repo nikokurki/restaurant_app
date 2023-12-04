@@ -46,14 +46,17 @@ def review():
         
 @app.route("/new", methods=["GET", "POST"])
 def new():
+    categories = ["Fine dining", "Pikaruokala", "Etninen", "Pizzeria", "Kahvila", "Pubi"]
     if request.method == "GET":
-        return render_template("new.html")
+        return render_template("new.html", categories=categories)
     if request.method == "POST":
         name = request.form["name"]
         description = request.form["content"]
         longitude = request.form["longitude"]
         latitude = request.form["latitude"]
-        if restaurants.add_restaurant(name, description, longitude, latitude):
+        category = request.form.get("selectedOption")
+        print(category)
+        if restaurants.add_restaurant(name, description, longitude, latitude, category):
             return redirect("/main")
         else:
             return render_template("error.html", message="Ravintolan lisäys ei onnistunut")
@@ -98,3 +101,4 @@ def delete():
         id = request.form["id"]
         reviews.delete_review(id)
         return redirect("/main")
+    

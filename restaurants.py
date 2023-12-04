@@ -11,7 +11,7 @@ def get_list():
     return result.fetchall()
 
 def get_restaurant_data(restaurant_id):
-    sql = text("SELECT description, open_hours FROM info WHERE restaurant_id=:id")
+    sql = text("SELECT I.description, I.open_hours, R.category FROM info I, restaurant_groups R  WHERE I.restaurant_id=:id AND R.restaurant_id=:id")
     result = db.session.execute(sql, {"id":restaurant_id})
     return result.fetchall()
 
@@ -24,7 +24,7 @@ def get_restaurant_id(name):
     result = db.session.execute(text("SELECT id FROM restaurants WHERE name=:name"), {"name":name})
     return result.fetchone()
 
-def add_restaurant(name,info,longitude,latitude):
+def add_restaurant(name,info,longitude,latitude,category):
     user_id = users.user_id()
     if user_id == 0:
         return False
@@ -34,6 +34,7 @@ def add_restaurant(name,info,longitude,latitude):
         db.session.commit()
         id = get_restaurant_id(name)
         add_info(id[0], info)
+        add_group(id[0], category)
         return True
     except:
         return False
@@ -44,4 +45,12 @@ def add_info(restaurant_id, description):
     db.session.execute(sql, {"restaurant_id":restaurant_id, "description":description, "open_hours":open_hours })
     db.session.commit()
     return True
+
+
+def add_group(restaurant_id, category):
+    sql = text("INSERT INTO restaurant_groups (category, restaurant_id) VALUES (:category, :restaurant_id)")
+    db.session.execute(sql, {"category": category, "restaurant_id": restaurant_id})
+    db.session.commit()
+    return True
+    
 
