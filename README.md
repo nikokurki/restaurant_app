@@ -26,6 +26,6 @@ Sovelluksen tilanne:
 - Karttaominaisuus on keskeneräinen, ravintolat saa avattua menun kautta lisäyksen jälkeen.
 - Ravintolan valitsemalla pystyy lukemaan arvosteluja sekä lisäämään niitä.
 - Ylläpitäjä pystyy lisäämään ravintoloita (myös antamaan näille luokituksen ennaltamäärätyistä vaihtoehdoista) ja poistamaan arvosteluja.
-- Ravintoloita ei myöskään pysty vielä hakemaan millään tavalla.
+- Ravintoloita ei pysty vielä hakemaan millään tavalla.
 
 
