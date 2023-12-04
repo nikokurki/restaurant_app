@@ -24,8 +24,8 @@ $ flask run
 Sovelluksen tilanne:
 - Tällä hetkellä sovelluksen ensimmäisenä luotu käyttäjä on aina ylläpitäjä.
 - Karttaominaisuus on keskeneräinen, ravintolat saa avattua menun kautta lisäyksen jälkeen.
-- Ravintolan valitsemalla pystyy lukemaan arvosteluja sekä lisäämään niitä. Ylläpitäjä pystyy myös poistamaan arvosteluja
-- Ravintoloita ei voi vielä lisätä ryhmäluokitukseen
+- Ravintolan valitsemalla pystyy lukemaan arvosteluja sekä lisäämään niitä.
+- Ylläpitäjä pystyy lisäämään ravintoloita (myös antamaan näille luokituksen ennaltamäärätyistä vaihtoehdoista) ja poistamaan arvosteluja.
 - Ravintoloita ei myöskään pysty vielä hakemaan millään tavalla.
 
 
