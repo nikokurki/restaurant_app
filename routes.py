@@ -15,7 +15,11 @@ def main():
 
 @app.route("/rev_page", methods=["GET","POST"])
 def rev_page():
-    id = int(request.form.get("selectedOption"))
+    if request.method == "POST":
+        id = int(request.form.get("selectedOption"))
+        session["restaurant_id"] = id
+    if request.method == "GET":
+        id = session["restaurant_id"]
     rev_list = reviews.get_list(id)
     res_data = restaurants.get_restaurant_data(id)
     rating_total = 0
@@ -28,7 +32,6 @@ def rev_page():
         avg_rating = 0
     name = restaurants.get_restaurant_name(id)
     session["restaurant"] = name[0]
-    session["restaurant_id"] = id
     return render_template("list.html", reviews=rev_list, data=res_data, rating=avg_rating, count=len(rev_list))
 
 @app.route("/review", methods=["GET", "POST"])
@@ -40,7 +43,7 @@ def review():
         rating = request.form.get("rate")
         content = request.form["content"]
         if reviews.send(id, content, rating):
-            return redirect("/main")
+            return redirect("/rev_page")
         else:
             return render_template("error.html", message="Arvostelun lisäys ei onnistunut")
         
@@ -55,7 +58,6 @@ def new():
         longitude = request.form["longitude"]
         latitude = request.form["latitude"]
         category = request.form.get("selectedOption")
-        print(category)
         if restaurants.add_restaurant(name, description, longitude, latitude, category):
             return redirect("/main")
         else:
@@ -95,10 +97,18 @@ def register():
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
         
 
-@app.route("/delete", methods=["POST"])
-def delete():
+@app.route("/delete_review", methods=["POST"])
+def delete_review():
     if request.method == "POST":
         id = request.form["id"]
         reviews.delete_review(id)
+        return redirect("/rev_page")
+    
+
+@app.route("/delete_restaurant", methods=["POST"])
+def delete_restaurant():
+    if request.method == "POST":
+        id = request.form["id"]
+        restaurants.delete_restaurant(id)
         return redirect("/main")
     

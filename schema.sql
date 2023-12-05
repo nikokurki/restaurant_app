@@ -11,7 +11,7 @@ CREATE TABLE restaurants (
 );
 CREATE TABLE ratings ( 
 	id SERIAL PRIMARY KEY,
-	restaurant_id INTEGER REFERENCES restaurants, 
+	restaurant_id INTEGER REFERENCES restaurants ON DELETE CASCADE, 
 	content TEXT, 
 	rating INTEGER, 
 	user_id INTEGER REFERENCES users, 
@@ -20,14 +20,14 @@ CREATE TABLE ratings (
 );
 CREATE TABLE info (
 	id SERIAL PRIMARY KEY,
-	restaurant_id INTEGER REFERENCES restaurants,
+	restaurant_id INTEGER REFERENCES restaurants ON DELETE CASCADE,
 	description TEXT,
 	open_hours TEXT
 );
 CREATE TABLE restaurant_groups (
     id SERIAL PRIMARY KEY,
-	category TEXT UNIQUE,
-	restaurant_id INTEGER REFERENCES restaurants
+	category TEXT,
+	restaurant_id INTEGER REFERENCES restaurants ON DELETE CASCADE
 );
 CREATE TABLE admins (
 	id SERIAL PRIMARY KEY,

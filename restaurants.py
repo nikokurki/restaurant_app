@@ -27,6 +27,7 @@ def get_restaurant_id(name):
 def add_restaurant(name,info,longitude,latitude,category):
     user_id = users.user_id()
     if user_id == 0:
+        print("hep")
         return False
     try:
         sql = text("INSERT INTO restaurants (name, longitude, latitude) VALUES (:name, :longitude, :latitude)")
@@ -52,5 +53,17 @@ def add_group(restaurant_id, category):
     db.session.execute(sql, {"category": category, "restaurant_id": restaurant_id})
     db.session.commit()
     return True
+
+def delete_restaurant(id):
+    sql = text("DELETE FROM restaurants WHERE id=:id")
+    db.session.execute(sql, {"id":id})
+    db.session.commit()
+    return True
+
+
+def get_all_ids():
+    sql = text("SELECT id FROM restaurants ORDER BY id")
+    result = db.session.execute(sql)
+    return result.fetchall()
     
 
