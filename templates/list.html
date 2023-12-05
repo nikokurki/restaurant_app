@@ -17,6 +17,12 @@ Avoinna: {{ open_hours }}
 <br><br>
 <b>{{ category }}</b>
 {% endfor %}
+{% if session.user_id == 1 %}
+<form action="/delete_restaurant", method="POST">
+    <input type="hidden" name="id" value="{{ session.restaurant_id }}">
+    <input type="submit" value="Poista ravintola">
+</form>
+{% endif %}
 <hr>
 <br>
 <div class="stars-container">
@@ -32,9 +38,6 @@ Avoinna: {{ open_hours }}
         {% for _ in range(full_stars) %}
             <span class="star">&#9733;</span>
         {% endfor %}
-        <!--{% if remaining_stars > 0 %}
-            <span class="star" style="--width: {{ (rating % 1) * 100 }}%">&#9733;</span>
-        {% endif %}-->
         {% for _ in range(remaining_stars) %}
             <span class="star">&#9734;</span>
         {% endfor %}
@@ -64,7 +67,7 @@ Avoinna: {{ open_hours }}
 <hr>
 <hr>
 {% if session.user_id == 1 %}
-<form action="/delete", method="POST">
+<form action="/delete_review", method="POST">
     <input type="hidden" name="id" value="{{ id }}">
     <input type="submit" value="Poista arvostelu">
 </form>
