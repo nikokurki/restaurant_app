@@ -1,59 +1,61 @@
 <!DOCTYPE html>
-<html>
 <head>
-<meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravintolasovellus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <title>Ravintolasovellus</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.js"></script>
-<link href="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.css" rel="stylesheet" />
-<style>
-	#map { position: absolute; top: 10vw; bottom: 600px; left: 10vw; width: 20%; }
-  .title { position: absolute; top: 0vw; bottom: 0; left: 15vw }
-</style>
 </head>
 <body>
-<div class="title">
-  <h2>Ravintolasovellus</h2>
-  {% if session.user_id == 1 %}
-  <b>Olet kirjautunut ylläpitäjänä.</b>
+  <div class="header">
+    <h1>Ravintolasovellus</h1>
+  </div>
+  <br><br>
+  {% if session.is_admin %}
+  Olet kirjautunut sisään käyttäjänä <b>{{session.name}}</b> (ylläpitäjä).
   <br>
   <br>
+  <div class="buttons">
   <form action="/new">
-      <input type="submit" value="Lisää ravintola">
+    <input type="submit" value="Lisää ravintola">
   </form>
+  <hr>
+  <form action="/user_list">
+    <input type="submit" value="Selaa käyttäjiä">
+  </form>
+</div>
   {% else %}
   <b>Olet kirjautunut sisään käyttäjänä {{ session.name }}. </b>
+  <br>
+  <br>
   {% endif %}
   {% if length > 0 %}
+  <div class="buttons">
   <form action="/rev_page" method="POST">
-    <label for="dynamicDropdown">Valitse ravintola:</label>
-    <select id="dynamicDropdown" name="selectedOption">
+    <label for="suggestions">Valitse ravintola:</label>
+    <datalist id="suggestions" name="restaurant">
       {% for item in restaurants %}
-        <option value="{{ item[0] }}">{{ item[1] }}</option>
+        <option value="{{ item[1] }}">{{item[1]}}</option>
       {% endfor %}
-    </select>
+    </datalist>
+    <input  autoComplete="on" list="suggestions" name="chosen_option"/> 
     <button type="submit">Lisää tietoa</button>
   </form>
   {% endif %}
+</div>
+<div class="list">
+  <h3>Sovelluksesta löytyvät ravintolat:</h3>
+  {% if length > 0 %}
+    {% for item in reviews %}
+    <b>{{item[1]}}</b> - <em>{{item[2]}}</em> - Arvosana: {{item[3]}} &#9733;
+    <br>
+    {% endfor %}
+  {% endif %}
+</div>
+<div class="buttons">
   <form action="/logout">
     <input type="submit" value="Kirjaudu ulos">
   </form>
 </div>
-<div id="map"></div>
-<script>
-  var map = new maplibregl.Map({
-    container: 'map', // container id
-    style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
-    center: [24.95, 60.17], // starting position [lng, lat]
-    zoom: 13 // starting zoom
-  });
-  const marker = new maplibregl.Marker()
-    .setLngLat([24.95, 60.17])
-    .addTo(map);
-
-
-</script>
-
 </body>
 </html>

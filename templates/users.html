@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravintolasovellus</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<title>Ravintolasovellus</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Ravintolasovellus</h1>
+    </div>
+    <h3>Sovellukseen rekistöröityneet käyttäjät</h3>
+    <hr>
+    {% for user in user_list %}
+    <b>ID: </b>{{user[0]}}
+    <b>Tunnus: </b>{{user[1]}}
+    {% if user[2] == False %}
+    <form action="/add_admin", method="POST">
+        <input type="hidden" name="id" value="{{ user[0] }}">
+        <input type="submit" value="Ylennä ylläpitäjäksi">
+    </form>
+    {% else %}
+    <b>Ylläpitäjä</b>
+    {% endif %}
+    <br>
+    <hr>
+    {% endfor %}
+    <hr>
+    <a href="/main">Takaisin ravintolahakuun</a>
+</body>

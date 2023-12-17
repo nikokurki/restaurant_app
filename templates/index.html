@@ -3,15 +3,18 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
-    <h1>Ravintolasovellus</h1>
-
+    <div class="header">
+        <h1>Ravintolasovellus</h1>
+    </div>
+<div class="buttons">
 <form action="/login" method="POST">
     <label for="username">Tunnus:</label>
     <input type="text" name="username"><br>
     <label for="password">Salasana:</label>
     <input type="password" name="password"><br>
-    <input type="submit" value="Kirjaudu">
+    <input id="login-buttoN" type="submit" value="Kirjaudu">
 </form>
+</div>
 Jos sinulla ei ole tunnusta, voit luoda uuden tunnuksen <a href="/register">tästä</a>
 
 </body>

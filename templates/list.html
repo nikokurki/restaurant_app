@@ -7,6 +7,11 @@
 <title>Ravintolasovellus</title>
 </head>
 <body>
+    <div class="header">
+        <h1>Ravintolasovellus</h1>
+    </div>
+<br>
+<br>
 Ravintolan <b>{{ session.restaurant}}</b> arvostelut:
 <br>
 <hr>
@@ -15,9 +20,10 @@ Ravintolan <b>{{ session.restaurant}}</b> arvostelut:
 <br><br>
 Avoinna: {{ open_hours }}
 <br><br>
-<b>{{ category }}</b>
+Kategoria: <b>{{ category }}</b>
+<hr>
 {% endfor %}
-{% if session.user_id == 1 %}
+{% if session.is_admin %}
 <form action="/delete_restaurant", method="POST">
     <input type="hidden" name="id" value="{{ session.restaurant_id }}">
     <input type="submit" value="Poista ravintola">
@@ -66,7 +72,7 @@ Avoinna: {{ open_hours }}
 <b>Aika: </b> {{ time.strftime("%Y-%m-%d %H:%M:%S") }}
 <hr>
 <hr>
-{% if session.user_id == 1 %}
+{% if session.is_admin %}
 <form action="/delete_review", method="POST">
     <input type="hidden" name="id" value="{{ id }}">
     <input type="submit" value="Poista arvostelu">
@@ -76,5 +82,5 @@ Avoinna: {{ open_hours }}
 {% endfor %}
 <a href="/review">Lisää arvostelu</a>
 <hr>
-<a href="/main">Takaisin karttanäkymään</a>
+<a href="/main">Takaisin ravintolahakuun</a>
 </body>

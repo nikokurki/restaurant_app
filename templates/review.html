@@ -3,6 +3,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/rating.css') }}">
     <title>Ravintolasovellus</title>
 </head>
+<div class="header">
+    <h1>Ravintolasovellus</h1>
+</div>
+<br>
 Arvostelu ravintolalle <b>{{ session.restaurant}}</b>:
 <form action="/review" method="post">
     <body>
@@ -19,6 +23,7 @@ Arvostelu ravintolalle <b>{{ session.restaurant}}</b>:
           <label for="star1" title="text">1 star</label>
         </div>
     </body>
+    <br>
     <label for="content">Lisätietoa:</label>
     <textarea name="content" rows="3" cols="40"></textarea>
     <br>

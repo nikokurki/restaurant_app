@@ -3,23 +3,29 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
-    <h1>Lisää ravintola</h1>
+    <div class="header">
+    <h1>Ravintolasovellus</h1>
+    </div>
+    <br>
+<div class="buttons">
+<h4>Lisää ravintola</h4>
 <form action="/new" method="post">
     <label for="name">Ravintolan nimi:</label>
     <input type="text" name="name"><br>
     <label for="content">Ravintolan kuvaus:</label>
     <textarea name="content" rows="3" cols="40"></textarea>
     <br>
-    <label for="longitude">Longitudi:</label>
-    <input type="longitude" name="longitude"><br>
-    <label for="Latitude">Latitudi:</label>
-    <input type="latitude" name="latitude"><br>
+    <label for="address">Osoite:</label>
+    <input type="address" name="address"><br>
+    <label for="hours">Avoinna:</label>
+    <input type="hours" name="hours"><br>
     <label for="dynamicDropdown">Valitse kategoria:</label>
     <select id="dynamicDropdown" name="selectedOption">
       {% for category in categories %}
         <option value="{{ category }}">{{ category }}</option>
       {% endfor %}
     </select>
-    <input type="submit" value="Lisää">
+    <input type="submit" value="Lisää ravintola">
 </form>
+</div>
 </body>
