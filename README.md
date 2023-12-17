@@ -10,7 +10,7 @@ Ominaisuuksia:
 2. Sovelluksen ensimmäinen käyttäjä on aina ylläpitäjä. Ylläpitäjä pystyy ylentämään muita käyttäjiä ylläpitäjiksi.
 3. Käyttäjä voi arvioida ja lukea arvioita ravintoloista
 4. Ylläpitäjä voi lisätä ja poistaa ravintoloja.
-5. Käyttäjä voi etsiä ravintolat sanan perusteella sekä nähdä näistä listauksen parhaimpien arvioiden mukaan.
+5. Käyttäjä voi etsiä ravintoloita nimen perusteella sekä nähdä näistä listauksen parhaimpien arvioiden mukaan.
 6. Ylläpitäjä voi poistaa arvioita ja luokitella ravintoloita ryhmiin.
 
 -----------------
