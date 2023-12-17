@@ -2,12 +2,34 @@ body {
     margin: auto;
     max-width: 45em;
     font-family: 'Helvetica', 'Arial', sans-serif;
+    background: #F5F5DC;
 }
 form label, input {
     margin: auto 0;
 }
-form {
+.header {
+    background: #FF5733;
+    font-weight: bold;
+    padding: 1em 1em;
+    font-size: 1em;
+    border-radius: .5em;
+    margin-top: 2em;
+}
+.buttons {
+    margin-top: 2em;
     margin-bottom: 2em;
     margin-left: 2em;
+    background: white;
+    border-radius: .5em;
+    padding: 1em 1em;
 }
+.list {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 2em;
+    background: white;
+    border-radius: .5em;
+    padding: 1em 1em;
+}
+
 
