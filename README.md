@@ -3,29 +3,39 @@
 
 Ravintolasovellus
 -----------------
-Sovelluksen idea on sama kuin Ravintolasovellus esimerkkiaiheessa: sovelluksessa näkyy tietyn alueen (suunnitelmissa Helsingin kantakaupunki) ravintolat, joita pystyy selaamaan ja arvioimaan. Käyttäjävaihtoehtoja on kaksi: peruskäyttäjä ja ylläpitäjä. 
+Sovellukseen voi lisätä ja arvioida ravintoloita. Sovellukseen kirjaudutaan tunnuksella ja kirjautumisvaihtoehtoja on kaksi: peruskäyttäjä ja ylläpitäjä.
 
 Ominaisuuksia:
 1. Käyttäjä voi kirjautua sisään, ulos ja luoda uuden tunnuksen
-2. Käyttäjä näkee ravintolat alueella ja voi painaa ravintola lisätietojen näyttämiseksi
+2. Sovelluksen ensimmäinen käyttäjä on aina ylläpitäjä. Ylläpitäjä pystyy ylentämään muita käyttäjiä ylläpitäjiksi.
 3. Käyttäjä voi arvioida ja lukea arvioita ravintoloista
-4. Ylläpitäjä voi lisätä ja poistaa ravintoloja (tavoitteena että ravintoloita pystyisi lisäämään hiirellä tiettyyn valittuun sijaintiin kartalla)
+4. Ylläpitäjä voi lisätä ja poistaa ravintoloja
 5. Käyttäjä voi etsiä ravintolat sanan perusteella sekä nähdä näistä listauksen parhaimpien arvioiden mukaan
-6. Ylläpitäjä voi poistaa arvioita ja luoda ryhmiä ravintoloiden luokitteluun
+6. Ylläpitäjä voi poistaa arvioita ja luokitella ravintoloita ryhmiin
 
------------------------
-Välipalautus 3
------------------------
+-----------------
 Käyttöohjeet:
 Sovellus tarvitsee schema.sql mukaisen tietokantarakenteen ja .env sisältää DATABASE_URL ja SECRET_KEY.
 
+DATABASE_URL=<tietokannan-paikallinen-osoite>
+SECRET_KEY=<salainen-avain>
+
+Kloonaa tämä repositorio omalle koneellesi.
+
+Aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla:
+
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -r ./requirements.txt
+
+Määritä vielä tietokannan skeema komennolla
+
+$ psql < schema.sql
+
+Käynnistä sovellus kommennolla
+
 $ flask run
 
-Sovelluksen tilanne:
-- Tällä hetkellä sovelluksen ensimmäisenä luotu käyttäjä on aina ylläpitäjä.
-- Karttaominaisuus on keskeneräinen, ravintolat saa avattua menun kautta lisäyksen jälkeen.
-- Ravintolan valitsemalla pystyy lukemaan arvosteluja sekä lisäämään niitä.
-- Ylläpitäjä pystyy lisäämään ravintoloita (myös antamaan näille luokituksen ennaltamäärätyistä vaihtoehdoista) ja poistamaan arvosteluja.
-- Ravintoloita ei pysty vielä hakemaan millään tavalla.
+
 
 
