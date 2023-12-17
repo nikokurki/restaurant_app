@@ -23,7 +23,9 @@ Kloonaa tämä repositorio omalle koneellesi.
 Aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla:
 
 $ python3 -m venv venv
+
 $ source venv/bin/activate
+
 $ pip install -r ./requirements.txt
 
 Määritä vielä tietokannan skeema komennolla
