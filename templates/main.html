@@ -47,7 +47,7 @@
   <h3>Sovelluksesta löytyvät ravintolat:</h3>
   {% if length > 0 %}
     {% for item in reviews %}
-    <b>{{item[0]}}</b> - <em>{{item[1]}}</em> - Arvosana: {{item[2]}} &#9733;
+    <b>{{item[0]}}</b> - <em>{{item[1]}}</em> - Arvosana: {{item[2]}} &#9733; ({{item[3]}} arvostelua)
     <br>
     {% endfor %}
   {% endif %}
