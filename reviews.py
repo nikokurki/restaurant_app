@@ -8,6 +8,12 @@ def get_list(restaurant_id):
     result = db.session.execute(sql, {"id":restaurant_id})
     return result.fetchall()
 
+def get_avg_rating(restaurant_id):
+    sql = text("SELECT AVG(rating) FROM ratings WHERE restaurant_id=:id AND visible=TRUE")
+    result = db.session.execute(sql, {"id":restaurant_id})
+    return result.fetchone()
+
+
 def send(restaurant_id, content, rating):
     user_id = users.user_id()
     if user_id == 0:

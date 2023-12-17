@@ -6,7 +6,13 @@ import users
 
 
 def get_list():
-    sql = text("SELECT id, name, longitude, latitude FROM restaurants ORDER BY id")
+    sql = text("SELECT R.id, R.name, G.category FROM restaurants R, restaurant_groups G WHERE R.id=G.restaurant_id GROUP BY R.id, G.category")
+    result = db.session.execute(sql)
+    return result.fetchall()
+
+
+def get_review_data():
+    sql = text("SELECT R.name, G.category, AVG(A.rating) FROM restaurants R, ratings A, restaurant_groups G WHERE A.visible=TRUE AND R.id=A.restaurant_id AND R.id=G.restaurant_id GROUP BY R.id, G.category")
     result = db.session.execute(sql)
     return result.fetchall()
 
@@ -17,33 +23,31 @@ def get_restaurant_data(restaurant_id):
 
 
 def get_restaurant_name(id):
-    result = db.session.execute(text("SELECT name FROM restaurants WHERE id=:id"), {"id":id})
+    result = db.session.execute(text("SELECT DISTINCT(name) FROM restaurants WHERE id=:id"), {"id":id})
     return result.fetchone()
 
 def get_restaurant_id(name):
     result = db.session.execute(text("SELECT id FROM restaurants WHERE name=:name"), {"name":name})
     return result.fetchone()
 
-def add_restaurant(name,info,longitude,latitude,category):
+def add_restaurant(name,info,address, hours, category):
     user_id = users.user_id()
     if user_id == 0:
-        print("hep")
         return False
     try:
-        sql = text("INSERT INTO restaurants (name, longitude, latitude) VALUES (:name, :longitude, :latitude)")
-        db.session.execute(sql, {"name":name, "longitude":longitude, "latitude":latitude })
+        sql = text("INSERT INTO restaurants (name, address) VALUES (:name, :address)")
+        db.session.execute(sql, {"name":name, "address":address })
         db.session.commit()
         id = get_restaurant_id(name)
-        add_info(id[0], info)
+        add_info(id[0], info, hours)
         add_group(id[0], category)
         return True
     except:
         return False
 
-def add_info(restaurant_id, description):
-    open_hours = "Klo 10-22" # Placeholder
+def add_info(restaurant_id, description, hours):
     sql = text("INSERT INTO info (restaurant_id, description, open_hours) VALUES (:restaurant_id, :description, :open_hours)")
-    db.session.execute(sql, {"restaurant_id":restaurant_id, "description":description, "open_hours":open_hours })
+    db.session.execute(sql, {"restaurant_id":restaurant_id, "description":description, "open_hours":hours })
     db.session.commit()
     return True
 

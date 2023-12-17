@@ -1,13 +1,13 @@
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	username TEXT UNIQUE,
-	password TEXT
+	password TEXT,
+	is_admin BOOL
 );
 CREATE TABLE restaurants (
 	id SERIAL PRIMARY KEY,
 	name TEXT UNIQUE,
-	longitude FLOAT,
-	latitude FLOAT
+	address TEXT
 );
 CREATE TABLE ratings ( 
 	id SERIAL PRIMARY KEY,
@@ -29,11 +29,7 @@ CREATE TABLE restaurant_groups (
 	category TEXT,
 	restaurant_id INTEGER REFERENCES restaurants ON DELETE CASCADE
 );
-CREATE TABLE admins (
-	id SERIAL PRIMARY KEY,
-	user_id INTEGER REFERENCES users
-);
-	
+
 	
 
 	
