@@ -12,7 +12,7 @@ def get_list():
 
 
 def get_review_data():
-    sql = text("SELECT R.name, G.category, AVG(A.rating) FROM restaurants R, ratings A, restaurant_groups G WHERE A.visible=TRUE AND R.id=A.restaurant_id AND R.id=G.restaurant_id GROUP BY R.id, G.category")
+    sql = text("SELECT R.name, G.category, AVG(A.rating), COUNT(A.rating) FROM restaurants R, ratings A, restaurant_groups G WHERE A.visible=TRUE AND R.id=A.restaurant_id AND R.id=G.restaurant_id GROUP BY R.id, G.category")
     result = db.session.execute(sql)
     return result.fetchall()
 
