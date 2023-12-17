@@ -17,8 +17,8 @@ def main():
             rating = round(rating,1)
         else:
             rating = "Ei arvosteluja"
-        review_list.append((id,name,category,rating))
-    
+        review_list.append((name,category,rating))
+    review_list = sorted(review_list, key=lambda x: x[2], reverse=True)
     length = len(restaurant_list)
     return render_template("main.html", restaurants=restaurant_list, reviews=review_list, length=length)
 
