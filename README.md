@@ -17,9 +17,6 @@ Ominaisuuksia:
 Käyttöohjeet:
 Sovellus tarvitsee schema.sql mukaisen tietokantarakenteen ja .env sisältää DATABASE_URL ja SECRET_KEY.
 
-DATABASE_URL=<tietokannan-paikallinen-osoite>
-SECRET_KEY=<salainen-avain>
-
 Kloonaa tämä repositorio omalle koneellesi.
 
 Aktivoi virtuaaliympäristö ja asenna sovelluksen riippuvuudet komennoilla:
